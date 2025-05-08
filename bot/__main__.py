@@ -19,8 +19,10 @@ async def hello(ctx):
 
 
 @bot.command(name='whitelist')
-async def whitelist(ctx, ip_address):
+async def whitelist(ctx, ip_address, name=None):
     description = ctx.author.name
+    if name:
+        description = name
     update_whitelist_rule(description, ip_address)
     await ctx.send(f'IP Address {ip_address} has been whitelisted!')
 
